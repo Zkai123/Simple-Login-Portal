@@ -1,4 +1,6 @@
-#by KAI   save this file by .py extension
+# by KAI..   save this file by .py extension
+# Simple program of login
+
 import re
 import os
 import string
