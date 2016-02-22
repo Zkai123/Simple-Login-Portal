@@ -100,7 +100,7 @@ def user():
             if [username,passwd] in data:
                 print("")
                 print(" -------------------------------- ")
-                print("Welcome  " , username.upper())
+                print("        Welcome  " , username.upper())
                 print(" -------------------------------- ")
                 break
             else:
