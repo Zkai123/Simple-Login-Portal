@@ -87,6 +87,7 @@ def user():
             
 
             if [username,passwd] in data:
+                os.system('cls')
                 break
         while True:
             print(" ********************************************** ")
