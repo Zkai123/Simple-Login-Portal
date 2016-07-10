@@ -10,6 +10,8 @@ def hello():
         screen()
     else:
         tkMessageBox.showerror(root,message=" Username or Password is Invalid")
+        txt.delete(0,END)
+        txtpass.delete(0,END)
 
 
 
@@ -47,10 +49,12 @@ def show():
         tkMessageBox.showinfo(root,message="Username field is empty")
     elif len(txt.get()) < 6:
         tkMessageBox.showinfo(root,message="username should be greater than 6 charcter")
+        txt.delete(0,END)
     elif len(txtpass.get()) == 0:
         tkMessageBox.showinfo(root,message=" Password field is Empty ")
     elif len(txtpass.get()) < 8:
         tkMessageBox.showinfo(root,message=" Password should be greater than 8 charcter")
+        txtpass.delete(0,END)
     elif ctxtpass.get() == txtpass.get():
         #tkMessageBox.showinfo(root,message=" Your Password Matched")  
         database.append(txt.get())
@@ -60,6 +64,7 @@ def show():
             login()
     elif ctxtpass.get() != txtpass.get():
         tkMessageBox.showerror(root,message="Password didn't Matched")
+        ctxtpass.delete(0,END)
 
 def bye():
     display.quit()
