@@ -1,5 +1,5 @@
 # Written by K@i.....
-# just save this file in .py extension (use python 2.7)
+# just save this file in .py extension
 from Tkinter import *
 import tkMessageBox
 
