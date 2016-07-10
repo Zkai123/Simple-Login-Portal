@@ -1,0 +1,114 @@
+from Tkinter import *
+import tkMessageBox
+
+def hello():
+    if  txt.get() and txtpass.get() in database:
+        tkMessageBox.showinfo(root,message="You are Logged In Successfully")
+        lgroot.destroy()
+        screen()
+    else:
+        tkMessageBox.showerror(root,message=" Username or Password is Invalid")
+
+
+
+
+def login(): 
+    global lgroot
+    lgroot= Tk() 
+    global txt,txtpass,database
+    
+    lgroot.title("Login")
+    lgroot.resizable(height=FALSE,width=FALSE)
+    base = Frame(lgroot,bg="darkslategray",height=400,width=400)
+    base.grid(row=0,column=4)
+    frame = Frame(base,bg="darkslategray",height=300,width=300,bd=10)
+    frame.grid(row=0,column=0,padx=20,pady=20)
+    userlab= Label(frame,text="Username",width=10,height=1,fg="white",bg="darkslategray",font="Rockwell 10")
+    userlab.grid(row=2,column=4)
+    txt = Entry(frame,width=30,font="Rockwell 10",bd=4,bg="darkslategray",fg="white")
+    txt.grid(row=2,column=10,padx=15,pady=15)
+    passlab = Label(frame,text="Password",width=10,height=1,fg="white",bg="darkslategray",font="Rockwell 10")
+    passlab.grid(row=4,column=4)
+    txtpass = Entry(frame,width=30,font="Rockwell 10",show='*',bd=4,fg="white",bg="darkslategray")
+    txtpass.grid(row=4,column=10,padx=15,pady=15)
+    btn = Button(frame,text="Login",bd=4,font="Rockwell 10",width=10,fg="white",bg="darkslategray",command=hello)
+    btn.grid(row=6,column=10,padx=15,pady=15)
+    lgroot.mainloop()
+
+
+
+
+
+
+def show():
+    if len(txt.get()) == 0:
+        tkMessageBox.showinfo(root,message="Username field is empty")
+    elif len(txt.get()) < 6:
+        tkMessageBox.showinfo(root,message="username should be greater than 6 charcter")
+    elif len(txtpass.get()) == 0:
+        tkMessageBox.showinfo(root,message=" Password field is Empty ")
+    elif len(txtpass.get()) < 8:
+        tkMessageBox.showinfo(root,message=" Password should be greater than 8 charcter")
+    elif ctxtpass.get() == txtpass.get():
+        #tkMessageBox.showinfo(root,message=" Your Password Matched")  
+        database.append(txt.get())
+        database.append(txtpass.get())
+        if txt.get() and txtpass.get() in database:
+            root.destroy()
+            login()
+    elif ctxtpass.get() != txtpass.get():
+        tkMessageBox.showerror(root,message="Password didn't Matched")
+
+def bye():
+    display.quit()
+def screen():
+    global display
+    display = Tk()
+    display.title("Welcome")
+    display.resizable(width=FALSE,height=FALSE)
+    frame = Frame(display,height=200,width=200,bg="darkslategray")
+    frame.grid(column=0,row=0,padx=5,pady=5) 
+    btn = Button(frame,text="Kai-pc",bg="darkslategray",font="Ravie 30",height=5,width=30,fg="white",command=bye)
+    btn.grid(row=2,column=2,padx=15,pady=15)
+    
+    display.mainloop()     
+         
+
+def signup():
+    global database,txt,txtpass,ctxtpass,root
+    database = []
+    root = Tk()
+    root.title("SignUp")
+    root.resizable(height=FALSE,width=FALSE)
+    base = Frame(root,bg="darkslategray",height=500,width=500)
+    base.grid(row=0,column=4)
+    frame = Frame(base,bg="darkslategray",height=400,width=400,bd=10)
+    frame.grid(row=0,column=0,padx=20,pady=20)
+    userlab= Label(frame,text="Username",width=10,height=1,fg="white",bg="darkslategray",font="Rockwell 10")
+    userlab.grid(row=2,column=4)
+    txt = Entry(frame,width=30,font="Rockwell 10",bd=4,bg="darkslategray",fg="white")
+    txt.grid(row=2,column=10,padx=15,pady=15)
+    passlab = Label(frame,text="Password",width=10,height=1,fg="white",bg="darkslategray",font="Rockwell 10")
+    passlab.grid(row=4,column=4)
+    txtpass = Entry(frame,width=30,font="Rockwell 10",show='*',bd=4,fg="white",bg="darkslategray")
+    txtpass.grid(row=4,column=10,padx=15,pady=15)                         
+    cpasslab = Label(frame,text="Confirm Password",width=15,height=1,fg="white",bg="darkslategray",font="Rockwell 10")
+    cpasslab.grid(row=6,column=4)
+    ctxtpass = Entry(frame,width=30,font="Rockwell 10",show='*',bd=4,fg="white",bg="darkslategray")
+    ctxtpass.grid(row=6,column=10,padx=15,pady=15) 
+    btn = Button(frame,text="Save",bd=4,font="Rockwell 10",width=10,fg="white",bg="darkslategray", command=show,activebackground="darkslategray")
+    btn.grid(row=10,column=10,padx=15,pady=15)
+    root.mainloop()
+signup()
+
+
+
+
+
+
+
+
+
+
+
+
